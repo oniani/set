@@ -4,6 +4,8 @@
 // minimal, yet productive.
 package set
 
+import "reflect"
+
 // Set represents a collection of unique elements
 type Set[T comparable] struct {
 	data map[T]struct{}
@@ -164,30 +166,6 @@ func (s *Set[T]) Clone() Set[T] {
 		n.data[elem] = struct{}{}
 	}
 	return n
-}
-
-// Map returns a new set containing elements obtained by applying the provided function.
-//
-// Complexity: O(n * f), where n is the number of elements in the set and f is function complexity.
-func (s *Set[T]) Map(f func(T) T) Set[T] {
-	res := New[T]()
-	for elem := range s.Elems() {
-		res.Add(f(elem))
-	}
-	return res
-}
-
-// Filter returns a new set containing elements that satisfy the filter function.
-//
-// Complexity: O(n * f), where n is the number of elements in the set and f is function complexity.
-func (s *Set[T]) Filter(f func(T) bool) Set[T] {
-	res := New[T]()
-	for elem := range s.Elems() {
-		if f(elem) {
-			res.Add(elem)
-		}
-	}
-	return res
 }
 
 // ToSlice returns a slice containing the elements of the set.
