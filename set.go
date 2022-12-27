@@ -168,6 +168,13 @@ func (s *Set[T]) Clone() Set[T] {
 	return n
 }
 
+// Returns true if the set equals to the other set, false otherwise.
+//
+// Complexity: O(1).
+func (s *Set[T]) Equals(o Set[T]) bool {
+	return reflect.DeepEqual(s.data, o.data)
+}
+
 // ToSlice returns a slice containing the elements of the set.
 //
 // Complexity: O(n), where n is the number of elements in the set.
