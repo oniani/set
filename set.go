@@ -4,7 +4,10 @@
 // minimal, yet productive.
 package set
 
-import "reflect"
+import (
+	"fmt"
+	"reflect"
+)
 
 // Set represents a collection of unique elements
 type Set[T comparable] struct {
@@ -186,4 +189,22 @@ func (s *Set[T]) ToSlice() []T {
 		idx += 1
 	}
 	return res
+}
+
+// Print formats and writes the set to standard output.
+//
+// Complexity: O(n), where n is the number of elements in the set.
+func (s *Set[T]) Print() {
+	res := "Set["
+	idx := 0
+	for elem := range s.Elems() {
+		res += fmt.Sprintf("%v", elem)
+		if idx != s.Len()-1 {
+			res += " "
+		} else {
+			res += "]"
+		}
+		idx += 1
+	}
+	fmt.Println(res)
 }
