@@ -161,11 +161,11 @@ func (s *Set[T]) Clear() {
 //
 // Complexity: O(n), where n is the number of elements in the set.
 func (s *Set[T]) Clone() Set[T] {
-	n := Set[T]{make(map[T]struct{})}
+	res := Set[T]{make(map[T]struct{})}
 	for elem := range s.Elems() {
-		n.data[elem] = struct{}{}
+		res.data[elem] = struct{}{}
 	}
-	return n
+	return res
 }
 
 // Returns true if the set equals to the other set, false otherwise.

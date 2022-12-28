@@ -53,14 +53,26 @@ func main() {
     // Check the results
     fmt.Println(s, s.Len())
     fmt.Println(p, p.Len())
-
-    // Map, filter, and slice conversion
-    // TODO
 }
+```
+
+## Testing
+
+- Unit Tests: Done (partially)
+
+```console
+$ go test -v
+```
+
+- Fuzz Tests: Done (partially)
+
+```console
+$ go test -v -fuzz FuzzAddRemoveString -fuzztime 16s
 ```
 
 ## License
 
 [MIT License][license]
 
+[godoc]: https://pkg.go.dev/golang.org/x/tools/cmd/godoc
 [license]: LICENSE
